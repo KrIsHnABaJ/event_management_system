@@ -15,7 +15,7 @@ export const profilesApi = {
 
 export const eventsApi = {
   getAll: () => api.get('/events'),
-  getByProfile: (profileId) => api.get(`/events/profile/${profileId}`), // ADD THIS LINE
+  getByProfile: (profileId) => api.get(`/events/profile/${profileId}`), 
   create: (data) => api.post('/events', data),
   update: (id, data) => api.patch(`/events/${id}`, data),
   delete: (id) => api.delete(`/events/${id}`),

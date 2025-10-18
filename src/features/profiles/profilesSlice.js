@@ -19,8 +19,8 @@ export const fetchProfiles = createAsyncThunk(
 const profilesSlice = createSlice({
   name: 'profiles',
   initialState: {
-    profiles: [],  // Changed from 'items' to 'profiles'
-    loading: false,  // Changed from 'status' to 'loading'
+    profiles: [],  
+    loading: false, 
     error: null
   },
   reducers: {
@@ -32,17 +32,17 @@ const profilesSlice = createSlice({
     builder
       .addCase(fetchProfiles.pending, (state) => {
         console.log('profilesSlice: Pending...');
-        state.loading = true;  // Changed from status = 'loading'
+        state.loading = true; 
         state.error = null;
       })
       .addCase(fetchProfiles.fulfilled, (state, action) => {
         console.log('profilesSlice: Fulfilled with:', action.payload);
-        state.loading = false;  // Changed from status = 'succeeded'
-        state.profiles = action.payload;  // Changed from 'items'
+        state.loading = false;  
+        state.profiles = action.payload;  
       })
       .addCase(fetchProfiles.rejected, (state, action) => {
         console.log('profilesSlice: Rejected:', action.payload);
-        state.loading = false;  // Changed from status = 'failed'
+        state.loading = false;  
         state.error = action.payload || action.error.message;
       });
   }

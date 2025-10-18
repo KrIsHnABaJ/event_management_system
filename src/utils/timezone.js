@@ -1,18 +1,13 @@
 import { format, toZonedTime, fromZonedTime } from 'date-fns-tz';
 
-/**
- * Get the user's current timezone
- */
+
 export const getUserTimezone = () => {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 };
 
-/**
- * Convert a date from one timezone to another
- */
+
 export const convertTimezone = (date, fromTimezone, toTimezone) => {
   try {
-    // Convert the date to the target timezone
     const zonedDate = toZonedTime(date, toTimezone);
     return zonedDate;
   } catch (error) {
@@ -21,9 +16,6 @@ export const convertTimezone = (date, fromTimezone, toTimezone) => {
   }
 };
 
-/**
- * Format a date in a specific timezone
- */
 export const formatInTimezone = (date, timezone, formatString = 'PPpp') => {
   try {
     const zonedDate = toZonedTime(date, timezone);
@@ -34,9 +26,7 @@ export const formatInTimezone = (date, timezone, formatString = 'PPpp') => {
   }
 };
 
-/**
- * Get timezone abbreviation (e.g., PST, EST)
- */
+
 export const getTimezoneAbbr = (timezone, date = new Date()) => {
   try {
     const formatted = new Intl.DateTimeFormat('en-US', {
@@ -52,9 +42,7 @@ export const getTimezoneAbbr = (timezone, date = new Date()) => {
   }
 };
 
-/**
- * Get UTC offset for a timezone
- */
+
 export const getTimezoneOffset = (timezone, date = new Date()) => {
   try {
     const formatted = new Intl.DateTimeFormat('en-US', {
@@ -73,9 +61,7 @@ export const getTimezoneOffset = (timezone, date = new Date()) => {
   }
 };
 
-/**
- * Check if two dates are in the same day in a given timezone
- */
+
 export const isSameDayInTimezone = (date1, date2, timezone) => {
   try {
     const zoned1 = toZonedTime(date1, timezone);
@@ -92,9 +78,7 @@ export const isSameDayInTimezone = (date1, date2, timezone) => {
   }
 };
 
-/**
- * Format time range with timezone info
- */
+
 export const formatTimeRange = (startDate, endDate, timezone, showTimezone = true) => {
   try {
     const userTimezone = getUserTimezone();
@@ -119,9 +103,7 @@ export const formatTimeRange = (startDate, endDate, timezone, showTimezone = tru
   }
 };
 
-/**
- * Convert event times to user's timezone
- */
+
 export const convertEventToUserTimezone = (event) => {
   const userTimezone = getUserTimezone();
   
@@ -138,9 +120,7 @@ export const convertEventToUserTimezone = (event) => {
   };
 };
 
-/**
- * Get list of common timezones for dropdown
- */
+
 export const getTimezoneOptions = () => {
   return [
     { value: 'America/New_York', label: 'Eastern Time (ET)' },

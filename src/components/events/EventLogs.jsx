@@ -40,7 +40,6 @@ const EventLogs = ({ eventId, onClose }) => {
     if (typeof value === 'object') return JSON.stringify(value);
     if (typeof value === 'boolean') return value ? 'Yes' : 'No';
     
-    // Check if it's a date string
     if (typeof value === 'string' && !isNaN(Date.parse(value)) && value.includes('T')) {
       return dayjs(value).format('MMM DD, YYYY hh:mm A');
     }

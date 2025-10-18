@@ -52,7 +52,7 @@ export const updateEvent = createAsyncThunk(
   async ({ id, data }, { rejectWithValue }) => {
     try {
       console.log('eventsSlice: Updating event:', id, data);
-      const response = await api.patch(`/events/${id}`, data); // CHANGED: PUT to PATCH
+      const response = await api.patch(`/events/${id}`, data); 
       console.log('eventsSlice: Update response:', response.data);
       return response.data;
     } catch (error) {
@@ -90,7 +90,7 @@ const eventsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Fetch Events
+
       .addCase(fetchEvents.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -104,7 +104,7 @@ const eventsSlice = createSlice({
         state.error = action.payload;
         state.events = [];
       })
-      // Fetch Events by Profile
+
       .addCase(fetchEventsByProfile.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -120,7 +120,6 @@ const eventsSlice = createSlice({
         state.error = action.payload;
         state.events = [];
       })
-      // Create Event
       .addCase(createEvent.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -133,7 +132,6 @@ const eventsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Update Event
       .addCase(updateEvent.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -149,7 +147,6 @@ const eventsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // Delete Event
       .addCase(deleteEvent.pending, (state) => {
         state.loading = true;
         state.error = null;

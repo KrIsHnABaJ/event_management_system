@@ -4,7 +4,7 @@ import { fetchEventsByProfile, deleteEvent } from '../../features/events/eventsS
 import { fetchProfiles } from '../../features/profiles/profilesSlice';
 import LoadingSpinner from '../common/LoadingSpinner';
 import TimezoneSelect from '../common/TimezoneSelect';
-import EventLogs from './EventLogs'; // ADD THIS IMPORT
+import EventLogs from './EventLogs';
 import { 
   formatInTimezone, 
   formatTimeRange, 
@@ -21,7 +21,7 @@ const EventList = ({ onEdit }) => {
   const userTimezone = getUserTimezone();
   const [selectedTimezone, setSelectedTimezone] = useState(userTimezone);
   const [selectedProfile, setSelectedProfile] = useState('');
-  const [showLogs, setShowLogs] = useState(null); // ADD THIS STATE
+  const [showLogs, setShowLogs] = useState(null); 
 
   useEffect(() => {
     console.log('EventList: Fetching profiles...');
@@ -65,12 +65,10 @@ const EventList = ({ onEdit }) => {
     setSelectedProfile(profileId);
   };
 
-  // ADD THIS FUNCTION
   const handleViewLogs = (eventId) => {
     setShowLogs(eventId);
   };
 
-  // ADD THIS FUNCTION
   const handleCloseLogs = () => {
     setShowLogs(null);
   };
@@ -137,7 +135,6 @@ const EventList = ({ onEdit }) => {
     return <div className="error-message">Error: {error}</div>;
   }
 
-  // ADD THIS: Show logs modal if showLogs is set
   if (showLogs) {
     return <EventLogs eventId={showLogs} onClose={handleCloseLogs} />;
   }
@@ -215,9 +212,7 @@ const EventList = ({ onEdit }) => {
                 <div key={event._id} className="event-card">
                   <div className="event-card-header">
                     <h3>{event.title || 'Untitled Event'}</h3>
-                    <span className={`event-status status-${event.status || 'draft'}`}>
-                      {event.status || 'draft'}
-                    </span>
+                    
                   </div>
 
                   <div className="event-card-body">

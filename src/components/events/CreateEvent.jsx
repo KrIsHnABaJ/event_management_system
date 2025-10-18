@@ -21,7 +21,7 @@ import { fetchProfiles } from '../../features/profiles/profilesSlice';
 
 const CreateEvent = () => {
   const dispatch = useDispatch();
-  const profiles = useSelector(state => state.profiles.profiles || []); // Changed from state.profiles.items
+  const profiles = useSelector(state => state.profiles.profiles || []); 
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -29,7 +29,7 @@ const CreateEvent = () => {
     title: '',
     description: '',
     profiles: [],
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, // Default to browser timezone
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
     startDate: dayjs(),
     endDate: dayjs().add(1, 'hour')
   });
@@ -40,8 +40,7 @@ const CreateEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate end date is after start date
+
     if (formData.endDate.isBefore(formData.startDate)) {
       setError('End date must be after start date');
       return;
@@ -57,7 +56,7 @@ const CreateEvent = () => {
       await eventsApi.create(eventData);
       dispatch(fetchEvents());
       
-      // Reset form
+     
       setFormData({
         title: '',
         description: '',

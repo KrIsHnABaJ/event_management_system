@@ -33,8 +33,7 @@ const EditEvent = ({ event, onClose, onUpdateSuccess }) => {
   useEffect(() => {
     if (event) {
       console.log('EditEvent: Loading event data:', event);
-      
-      // Extract profile IDs from the event
+
       const profileIds = event.profiles?.map(p => 
         typeof p === 'object' ? p._id : p
       ) || [];
@@ -114,7 +113,7 @@ const EditEvent = ({ event, onClose, onUpdateSuccess }) => {
       timezone: formData.timezone,
       startDate: formData.startDate.tz(formData.timezone).toISOString(),
       endDate: formData.endDate.tz(formData.timezone).toISOString(),
-      updatedBy: 'Admin' // You can change this to actual user
+      updatedBy: 'Admin' 
     };
 
     try {
